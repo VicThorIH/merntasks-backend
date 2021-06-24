@@ -13,6 +13,9 @@ module.exports = function (req, res, next) {
     //Validar el token
     try {
         res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Credentials", true);
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+        res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
         const cifrado = jwt.verify(token, process.env.SECRETA);
         req.usuario = cifrado.usuario;
         next();
