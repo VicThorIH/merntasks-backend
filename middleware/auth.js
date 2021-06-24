@@ -12,6 +12,7 @@ module.exports = function (req, res, next) {
 
     //Validar el token
     try {
+        res.header("Access-Control-Allow-Origin", "*");
         const cifrado = jwt.verify(token, process.env.SECRETA);
         req.usuario = cifrado.usuario;
         next();
